@@ -1,0 +1,81 @@
+{% extends "users/login.html" %}
+{% load static %}
+
+{% block login %}{% endblock login %}
+
+
+{% block new_posts %}
+<!-- client popular posts -->
+<section class="client_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-10 mx-auto">
+        <div class="heading_container">
+          <h2>
+            {{user.username}}'s Posts
+          </h2>
+        </div>
+        {% for post in paginated_posts %}
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="detail-box">
+                <h4>
+                  {{post.user.username}}
+                </h4>
+                <a href="{% url 'main:individual_post' post.id %}" >
+                  {{post.title}}
+                </a>
+                <p>
+                  {{post.category}}
+                </p>
+                <img src="{% static 'main/images/quote.png' %}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% if paginated_posts.has_previous %}
+    <a href="?page=1">Primera</a>
+    {% if paginated_posts.previous_page_number != 1 %}
+    <a href="?page={{paginated_posts.previous_page_number}}">Previous</a>
+    {% endif %}
+{% endif %}
+
+{% for num in paginated_posts.paginator.page_range %}
+    {% if paginated_posts.number == num %}
+        <a href="?page={{num}}">{{num}}</a>
+    {% elif num > paginated_posts.number|add:'-3' and num < paginated_posts.num|add:'3' %}
+        <a href="?page={{num}}">{{num}}</a>
+    {% endif %}
+
+{% endfor %}
+
+{% if paginated_posts.has_next %}
+    {% if paginated_posts.next_page_number != paginated_posts.paginator.num_pages %}
+    <a href="?page={{paginated_posts.next_page_number}}">Next</a>
+    {% endif %}
+    <a href="?page={{paginated_post.paginator.num_pages}}">Last</a>
+{% endif %}
+
+
+<!-- end client section -->
+{% endblock new_posts %}
+
+
+
+
+
+
+
+
+
+
+
+

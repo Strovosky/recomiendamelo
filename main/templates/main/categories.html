@@ -1,0 +1,90 @@
+{% extends "users/login.html" %}
+{% load static %}
+
+{% block login %}{% endblock %}
+
+
+{% block category %}
+<!-- category section -->
+
+  <section class="category_section layout_padding">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="search" placeholder="Search" name="post_search">
+        <button type="submit" name="search_btn" value="clicked">Search</button>
+    </form>
+  <div class="container">
+      <a href="{% url 'main:categories' %}">
+          <div class="heading_container">
+              <h2>
+                  Category
+              </h2>
+          </div>
+      </a>
+      <div class="category_container">
+      <div class="box">
+          <div class="img-box">
+          <img src="{% static 'main/images/c1.png' %}" alt="">
+          </div>
+          <div class="detail-box">
+          <h5>
+              <a href="{% url 'main:category_processor' 'producto' %}" >Productos</a>
+          </h5>
+          </div>
+      </div>
+      <div class="box">
+          <div class="img-box">
+          <img src="{% static 'main/images/c2.png' %}" alt="">
+          </div>
+          <div class="detail-box">
+          <h5>
+              <a href="{% url 'main:category_processor' 'empresa' %}" >Empresas</a>
+          </h5>
+          </div>
+      </div>
+      <div class="box">
+          <div class="img-box">
+          <img src="{% static 'main/images/c3.png' %}" alt="">
+          </div>
+          <div class="detail-box">
+          <h5>
+              <a href="{% url 'main:category_processor' 'musica' %}" >Música</a>
+          </h5>
+          </div>
+      </div>
+      <div class="box">
+          <div class="img-box">
+          <img src="{% static 'main/images/c4.png' %}" alt="">
+          </div>
+          <div class="detail-box">
+          <h5>
+              <a href="{% url 'main:category_processor' 'pelicula' %}" >Peliculas</a>
+          </h5>
+          </div>
+      </div>
+      <div class="box">
+          <div class="img-box">
+          <img src="{% static 'main/images/c5.png' %}" alt="">
+          </div>
+          <div class="detail-box">
+          <h5>
+              <a href="{% url 'main:category_processor' 'famoso' %}" >Famosos</a>
+          </h5>
+          </div>
+      </div>
+      <div class="box">
+          <div class="img-box">
+          <img src="{% static 'main/images/c6.png' %}" alt="">
+          </div>
+          <div class="detail-box">
+          <h5>
+              <a href="{% url 'main:category_processor' 'vida' %}" >Vida</a>
+          </h5>
+          </div>
+      </div>
+      </div>
+  </div>
+  </section>
+<!-- end category section -->
+{% endblock category %}
+

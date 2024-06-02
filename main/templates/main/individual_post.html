@@ -1,0 +1,56 @@
+{% extends "main/my_posts.html" %}
+{% load static %}
+
+{% block new_posts %}
+<section class="client_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-md-10 mx-auto">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="detail-box">
+                    <div class="heading_container">
+                        <h2>
+                            {{post.title}}
+                        </h2>
+                    </div>
+                  <h4>
+                    {{post.user.username}}
+                  </h4>
+                  <p>
+                    {{post.category}}
+                  </p>
+                  <img src="{% static 'main/images/quote.png' %}" alt="Quotation mark">
+                  {% if user.id == post.user.id %}
+                  <p></p>
+                  <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="delete_post_btn" value="{{post.id}}">Delete Post</button>
+                  </form>
+                  {% endif %}
+                  {% if user.is_authenticated %}
+                  <p></p>
+                  <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="comment_text" placeholder="Write your comment...">
+                    <button type="submit" name="create_comment" value="{{post.id}}">Comment</button>
+                  </form>
+                  {% endif %}
+                  <p></p>
+                  {% for comment in post.comment_set.all %}
+                    <ul>
+                      <li>{{comment.text}}</li>
+                    </ul>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+{% endblock new_posts %}
+

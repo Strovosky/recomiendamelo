@@ -1,0 +1,68 @@
+{% extends "main/index.html" %}
+
+{% load static %}
+
+
+{% block login %}
+<!-- experience section -->
+
+<section class="experience_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="img-box">
+          <img src="{% static 'main/images/experience-img.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="detail-box">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <div class="heading_container">
+                    <h2>
+                    Reaching out to us is very easy:
+                    </h2>
+                </div>
+                <label for="name">
+                    <span>Name</span>
+                    <input type="text" id="name" name="name" maxlength="40" placeholder="Your name..." required>
+                </label>
+                <label for="email">
+                    <span>Email</span>
+                    <input type="text" name="email" id="email" maxlength="100" placeholder="Your email..." required>
+                </label>
+                <label for="subject">
+                    <input type="text" name="subject" id="subject" maxlength="150" placeholder="What's the message about" required>
+                </label>
+                <label for="message">
+                    <span>Message</span>
+                    <input type="text" name="message" id="message" maxlength="500" placeholder="Your message..." required>
+                </label>
+                <div class="btn-box" >
+                    <button class="btn-2" name="submit_email_btn" value="clicked" >Submit</button>
+                </div>
+            </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- end experience section -->
+{% endblock login %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,124 @@
+{% extends "main/index.html" %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock title %}
+{% block upper_area %}
+{% block header %}
+<!-- header section strats -->
+<div style="background-color: blue;">
+    <header class="header_section">
+    <div class="container-fluid">
+        <nav  class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="{% url 'main:home' %}">
+            <img src="{% static 'main/images/logo.png' %}" alt="Logo" />
+            <span>
+            Spering
+            </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'main:home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.html"> About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="work.html">Work </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="category.html"> Category </a>
+            </li>
+            </ul>
+            <div class="user_option">
+              <a href="{% url 'signup' %}">
+                <span>
+                  Sign Up
+                </span>
+                <span> / </span>
+              </a>
+            <a href="{% url 'login' %}">
+                <span>
+                Login
+                </span>
+            </a>
+            <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+            </form>
+            </div>
+        </div>
+        <div>
+            <div class="custom_menu-btn ">
+            <button>
+                <span class=" s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+            </button>
+            </div>
+        </div>
+
+        </nav>
+    </div>
+    </header>
+</div>
+<!-- end header section -->
+{% endblock header %}
+{% endblock upper_area %}
+{% block slider %}{% endblock slider %}
+{% block login %}
+<!-- experience section -->
+
+<section class="experience_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="img-box">
+          <img src="{% static 'main/images/experience-img.jpg' %}" alt="Man ready to complain">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              Porque Nacimos Para Quejarnos
+            </h2>
+          </div>
+          <p>
+            <b>Crea tu cuenta con nosotros para quejarte cuanto quieras.</b>
+          </p>
+          <form method="post" action="#">
+            {{form}}
+            {% csrf_token %}
+            <div class="btn-box">
+                <button type="submit" class="btn-2" name="btn_login">Sign Up</button>
+            </div>
+            <p>I already have an account.</p>
+            <div class="btn-box">
+                <a href="{% url 'login' %}" class="btn-1">
+                Log In
+                </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- end experience section -->
+{% endblock login %}
+{% block category %}{% endblock category %}
+<!--{% block about %}{% endblock about %}-->
+{% block new_posts %}{% endblock new_posts %}
+
